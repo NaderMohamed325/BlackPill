@@ -9,7 +9,7 @@
 #define MEMORY_UTILS_H_
 
 #include <stdint.h>
-
+#include "NVIC_M4.h"
 /**
  * @brief Defines a volatile 32-bit integer type.
  */
@@ -23,18 +23,18 @@ typedef volatile uint32_t vint;
  * This structure defines the layout of the GPIO peripheral registers.
  */
 typedef struct
-{
-    vint MODER;   /**< GPIO port mode register. */
-    vint OTYPER;  /**< GPIO port output type register. */
+    {
+    vint MODER; /**< GPIO port mode register. */
+    vint OTYPER; /**< GPIO port output type register. */
     vint OSPEEDR; /**< GPIO port output speed register. */
-    vint PUPDR;   /**< GPIO port pull-up/pull-down register. */
-    vint IDR;     /**< GPIO port input data register. */
-    vint ODR;     /**< GPIO port output data register. */
-    vint BSRR;    /**< GPIO port bit set/reset register. */
-    vint LCKR;    /**< GPIO port configuration lock register. */
-    vint AFRL;    /**< GPIO alternate function low register. */
-    vint AFRH;    /**< GPIO alternate function high register. */
-} GPIOX_TypeDef;
+    vint PUPDR; /**< GPIO port pull-up/pull-down register. */
+    vint IDR; /**< GPIO port input data register. */
+    vint ODR; /**< GPIO port output data register. */
+    vint BSRR; /**< GPIO port bit set/reset register. */
+    vint LCKR; /**< GPIO port configuration lock register. */
+    vint AFRL; /**< GPIO alternate function low register. */
+    vint AFRH; /**< GPIO alternate function high register. */
+    } GPIOX_TypeDef;
 
 // Base addresses for GPIO ports
 #define GPIOA_BASE (0x40020000) /**< Base address for GPIOA. */
@@ -54,37 +54,37 @@ typedef struct
  * This structure defines the layout of the RCC peripheral registers.
  */
 typedef struct
-{
-    vint CR;                /**< RCC clock control register. */
-    vint PLLCFGR;           /**< RCC PLL configuration register. */
-    vint CFGR;              /**< RCC clock configuration register. */
-    vint CIR;               /**< RCC clock interrupt register. */
-    vint AHB1RSTR;          /**< RCC AHB1 peripheral reset register. */
-    vint AHB2RSTR;          /**< RCC AHB2 peripheral reset register. */
-    vint Reserved0[2];      /**< Reserved. */
-    vint APB1RSTR;          /**< RCC APB1 peripheral reset register. */
-    vint APB2RSTR;          /**< RCC APB2 peripheral reset register. */
-    vint Reserved1[2];      /**< Reserved. */
-    vint AHB1ENR;           /**< RCC AHB1 peripheral clock enable register. */
-    vint AHB2ENR;           /**< RCC AHB2 peripheral clock enable register. */
-    vint Reserved2[2];      /**< Reserved. */
-    vint APB1ENR;           /**< RCC APB1 peripheral clock enable register. */
-    vint APB2ENR;           /**< RCC APB2 peripheral clock enable register. */
-    vint Reserved3[2];      /**< Reserved. */
-    vint AHB1LPENR;         /**< RCC AHB1 peripheral clock enable in low power mode register. */
-    vint AHB2LPENR;         /**< RCC AHB2 peripheral clock enable in low power mode register. */
-    vint Reserved4[2];      /**< Reserved. */
-    vint RCC_APB1LPENR;     /**< RCC APB1 peripheral clock enable in low power mode register. */
-    vint RCC_APB2LPENR;     /**< RCC APB2 peripheral clock enable in low power mode register. */
-    vint Reserved5[2];      /**< Reserved. */
-    vint BDCR;              /**< RCC Backup Domain Control Register. */
-    vint CSR;               /**< RCC Clock Source Recovery Register. */
-    vint Reserved6[2];      /**< Reserved. */
-    vint SSCGR;             /**< RCC Spread Spectrum Clock Generator Register. */
-    vint PLLI2SCFGR;        /**< RCC PLLI2S Configuration Register. */
-    vint Reserved;          /**< Reserved. */
-    vint DCKCFGR;           /**< RCC Dedicated Clock Configuration Register. */
-} RCC_TypeDef;
+    {
+    vint CR; /**< RCC clock control register. */
+    vint PLLCFGR; /**< RCC PLL configuration register. */
+    vint CFGR; /**< RCC clock configuration register. */
+    vint CIR; /**< RCC clock interrupt register. */
+    vint AHB1RSTR; /**< RCC AHB1 peripheral reset register. */
+    vint AHB2RSTR; /**< RCC AHB2 peripheral reset register. */
+    vint Reserved0[2]; /**< Reserved. */
+    vint APB1RSTR; /**< RCC APB1 peripheral reset register. */
+    vint APB2RSTR; /**< RCC APB2 peripheral reset register. */
+    vint Reserved1[2]; /**< Reserved. */
+    vint AHB1ENR; /**< RCC AHB1 peripheral clock enable register. */
+    vint AHB2ENR; /**< RCC AHB2 peripheral clock enable register. */
+    vint Reserved2[2]; /**< Reserved. */
+    vint APB1ENR; /**< RCC APB1 peripheral clock enable register. */
+    vint APB2ENR; /**< RCC APB2 peripheral clock enable register. */
+    vint Reserved3[2]; /**< Reserved. */
+    vint AHB1LPENR; /**< RCC AHB1 peripheral clock enable in low power mode register. */
+    vint AHB2LPENR; /**< RCC AHB2 peripheral clock enable in low power mode register. */
+    vint Reserved4[2]; /**< Reserved. */
+    vint RCC_APB1LPENR; /**< RCC APB1 peripheral clock enable in low power mode register. */
+    vint RCC_APB2LPENR; /**< RCC APB2 peripheral clock enable in low power mode register. */
+    vint Reserved5[2]; /**< Reserved. */
+    vint BDCR; /**< RCC Backup Domain Control Register. */
+    vint CSR; /**< RCC Clock Source Recovery Register. */
+    vint Reserved6[2]; /**< Reserved. */
+    vint SSCGR; /**< RCC Spread Spectrum Clock Generator Register. */
+    vint PLLI2SCFGR; /**< RCC PLLI2S Configuration Register. */
+    vint Reserved; /**< Reserved. */
+    vint DCKCFGR; /**< RCC Dedicated Clock Configuration Register. */
+    } RCC_TypeDef;
 
 #define RCC_BASE (0x40023800) /**< Base address for RCC. */
 #define RCC ((RCC_TypeDef *)(RCC_BASE)) /**< Pointer to RCC registers. */
@@ -109,5 +109,30 @@ typedef struct
 #define RCC_GPIOA_Disable() (RCC->AHB1ENR &= ~(1 << 0)) /**< Disable clock for GPIOA. */
 #define RCC_GPIOB_Disable() (RCC->AHB1ENR &= ~(1 << 1)) /**< Disable clock for GPIOB. */
 #define RCC_GPIOC_Disable() (RCC->AHB1ENR &= ~(1 << 2)) /**< Disable clock for GPIOC. */
+
+/**
+ * @brief Macros to reset SYSCFG peripheral.
+ */
+#define RCC_SYSCFG_Reset()  (RCC->APB2RSTR |= (1 << 14); RCC->APB2RSTR &= ~(1 << 14)) /**< Reset SYSCFG. */
+
+/**
+ * @brief Macros to disable SYSCFG clock.
+ */
+#define RCC_SYSCFG_Disable() (RCC->APB2ENR &= ~(1 << 14)) /**< Disable clock for SYSCFG. */
+
+/******************************* EXTI_Section ********************************/
+#define EXTI_BASE                        0x40013C00
+
+typedef struct
+    {
+    vint IMR;
+    vint EMR;
+    vint RTSR;
+    vint FTSR;
+    vint SWIER;
+    vint PR;
+    } EXTI_TypeDef;
+
+#define EXTI ((EXTI_TypeDef*)EXTI_BASE)
 
 #endif /* MEMORY_UTILS_H_ */
