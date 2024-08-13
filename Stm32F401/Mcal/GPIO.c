@@ -124,7 +124,7 @@ uint8_t Mcal_Gpio_Read(GPIO_TypeDef *GPIOx, uint8_t Pin_Number)
  * @param  Pin_Number: Index of the pin to toggle.
  * @return None
  */
-void Mcal_Gpio_Toggel(GPIO_TypeDef *GPIOx, Pin_index_t Pin_Number)
+void Mcal_Gpio_Toggle(GPIO_TypeDef *GPIOx, Pin_index_t Pin_Number)
     {
     // Toggle the output level of the pin
     Toggle(GPIOx->ODR, Pin_Number, 1);

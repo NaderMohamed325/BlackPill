@@ -1,10 +1,3 @@
-/*
- * stm32f401xc.h
- *
- *  Created on: Aug 13, 2024
- *      Author: xcite
- */
-
 #ifndef STM32F401XC_H_
 #define STM32F401XC_H_
 
@@ -38,7 +31,7 @@
  * @brief Macro to read a specific bit in a register.
  * @param Reg: Register to read.
  * @param bit: Bit position to read.
- * @return: Non-zero if the bit is set, zero otherwise.
+ * @return Non-zero if the bit is set, zero otherwise.
  */
 #define Read(Reg, bit)            (((Reg) & (1 << (bit))) != 0)
 
