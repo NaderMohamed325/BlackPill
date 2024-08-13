@@ -9,6 +9,7 @@ void delay_ms(uint32_t ms) {
     }
 }
 int main(void) {
+    RCC_GPIOA_Enable();
     LCD_PinConfig lcd_config = {
         .port = GPIOA,
         .rs = PIN_0,
