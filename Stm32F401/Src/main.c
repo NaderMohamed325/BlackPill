@@ -16,10 +16,19 @@
  ******************************************************************************
  */
 
-#include "../Mcal/GPIO.h"
+#include "../Inc/GPIO.h"
 
-int main(void)
-{
-    /* Loop forever */
-	for(;;);
+
+
+void delay_ms(uint32_t ms) {
+    // Simple delay loop
+    for (volatile uint32_t i = 0; i < ms * 1000; i++);
+}
+
+
+int main(void) {
+
+    while (1){
+
+    }
 }
