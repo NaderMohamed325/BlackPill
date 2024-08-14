@@ -1,0 +1,5 @@
+../Mcal/GPIO.c:16:6:Mcal_Gpio_Init	6
+../Mcal/GPIO.c:71:6:Mcal_Gpio_Deinit	4
+../Mcal/GPIO.c:95:6:Mcal_Gpio_Write	3
+../Mcal/GPIO.c:115:9:Mcal_Gpio_Read	1
+../Mcal/GPIO.c:127:6:Mcal_Gpio_Toggle	1

@@ -1,0 +1,9 @@
+../HAL/Lcd.c:12:13:LCD_Write4Bits	24	static
+../HAL/Lcd.c:25:13:LCD_Write8Bits	16	static
+../HAL/Lcd.c:30:6:LCD_SendCommand	16	static
+../HAL/Lcd.c:36:6:LCD_SendData	16	static
+../HAL/Lcd.c:42:6:LCD_Init	40	static
+../HAL/Lcd.c:91:6:LCD_Clear	16	static
+../HAL/Lcd.c:96:6:LCD_SetCursor	24	static
+../HAL/Lcd.c:101:6:LCD_PrintChar	16	static
+../HAL/Lcd.c:105:6:LCD_PrintString	16	static
